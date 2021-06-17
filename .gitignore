@@ -1,0 +1,31 @@
+# Project exclude paths
+/.gradle/
+/Car Sharing/task/build/
+/Car Sharing/task/out/
+/Car Sharing/task/out/production/classes/
+/Car Sharing/task/out/test/classes/
+/Topics/Anonymous classes/Capture variables/out/
+/Topics/Anonymous classes/Capture variables/out/production/classes/
+/Topics/Anonymous classes/Single method/out/
+/Topics/Anonymous classes/Single method/out/production/classes/
+/Topics/Anonymous classes/String reverser/out/
+/Topics/Anonymous classes/String reverser/out/production/classes/
+/Topics/Anonymous classes/Theory/out/
+/Topics/Anonymous classes/Theory/out/production/classes/
+/Topics/Boxing and unboxing/Safe converting/out/
+/Topics/Boxing and unboxing/Safe converting/out/production/classes/
+/Topics/Boxing and unboxing/Theory/out/
+/Topics/Boxing and unboxing/Theory/out/production/classes/
+/Topics/Exception handling/Converting and multiplying/out/
+/Topics/Exception handling/Converting and multiplying/out/production/classes/
+/Topics/Exception handling/String to double conversion/out/
+/Topics/Exception handling/String to double conversion/out/production/classes/
+/Topics/Exception handling/Theory/build/
+/Topics/Exception handling/Theory/out/
+/Topics/Exception handling/Theory/out/production/classes/
+/Topics/Stream pipelines/The ten most frequent words/out/
+/Topics/Stream pipelines/The ten most frequent words/out/production/classes/
+/Topics/Stream pipelines/The total number of employees/out/
+/Topics/Stream pipelines/The total number of employees/out/production/classes/
+/Topics/Stream pipelines/Theory/out/
+/Topics/Stream pipelines/Theory/out/production/classes/

@@ -1,0 +1,180 @@
+2021-06-14 20:15:09 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLNonTransientException: Объект уже закрыт
+The object is already closed [90007-200]
+2021-06-16 11:38:01 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Столбец "COMPANY_ID" не найден
+Column "COMPANY_ID" not found; SQL statement:
+CREATE TABLE IF NOT EXISTS CUSTOMER (ID INTEGER PRIMARY KEY AUTO_INCREMENT,NAME VARCHAR NOT NULL UNIQUE,RENTED_CAR_ID INT, FOREIGN KEY (COMPANY_ID) REFERENCES CAR(ID)) [42122-200]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:453)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:429)
+	at org.h2.message.DbException.get(DbException.java:205)
+	at org.h2.message.DbException.get(DbException.java:181)
+	at org.h2.table.Table.getColumn(Table.java:703)
+	at org.h2.table.IndexColumn.mapColumns(IndexColumn.java:115)
+	at org.h2.command.ddl.AlterTableAddConstraint.tryUpdate(AlterTableAddConstraint.java:216)
+	at org.h2.command.ddl.AlterTableAddConstraint.update(AlterTableAddConstraint.java:78)
+	at org.h2.command.ddl.CommandWithColumns.createConstraints(CommandWithColumns.java:83)
+	at org.h2.command.ddl.CreateTable.update(CreateTable.java:133)
+	at org.h2.command.CommandContainer.update(CommandContainer.java:198)
+	at org.h2.command.Command.executeUpdate(Command.java:251)
+	at org.h2.jdbc.JdbcStatement.executeUpdateInternal(JdbcStatement.java:168)
+	at org.h2.jdbc.JdbcStatement.executeUpdate(JdbcStatement.java:126)
+	at carsharing.CompanyRepository.update(CompanyRepository.java:193)
+	at carsharing.CompanyRepository.createTable(CompanyRepository.java:41)
+	at carsharing.Main.main(Main.java:18)
+2021-06-16 19:48:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Столбец "rentedCarId" не найден
+Column "rentedCarId" not found [42122-200]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:453)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:429)
+	at org.h2.message.DbException.get(DbException.java:205)
+	at org.h2.message.DbException.get(DbException.java:181)
+	at org.h2.jdbc.JdbcResultSet.getColumnIndex(JdbcResultSet.java:3169)
+	at org.h2.jdbc.JdbcResultSet.get(JdbcResultSet.java:3268)
+	at org.h2.jdbc.JdbcResultSet.getInt(JdbcResultSet.java:352)
+	at carsharing.CompanyRepository.getAllCustomers(CompanyRepository.java:160)
+	at carsharing.Main.main(Main.java:34)
+2021-06-16 19:48:37 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Столбец "rented_car" не найден
+Column "rented_car" not found [42122-200]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:453)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:429)
+	at org.h2.message.DbException.get(DbException.java:205)
+	at org.h2.message.DbException.get(DbException.java:181)
+	at org.h2.jdbc.JdbcResultSet.getColumnIndex(JdbcResultSet.java:3169)
+	at org.h2.jdbc.JdbcResultSet.get(JdbcResultSet.java:3268)
+	at org.h2.jdbc.JdbcResultSet.getInt(JdbcResultSet.java:352)
+	at carsharing.CompanyRepository.getAllCustomers(CompanyRepository.java:160)
+	at carsharing.Main.main(Main.java:34)
+2021-06-16 19:50:01 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Столбец "CUSTOMER.RENTED_CAR" не найден
+Column "CUSTOMER.RENTED_CAR" not found; SQL statement:
+SELECT customer.id, customer.rented_car as redntedCarId, car.name as carName, company.name as companyName  FROM customer  LEFT JOIN car on customer.rented_car = car.id  LEFT JOIN company on car.company_id = company.id   WHERE customer.id =2 [42122-200]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:453)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:429)
+	at org.h2.message.DbException.get(DbException.java:205)
+	at org.h2.message.DbException.get(DbException.java:181)
+	at org.h2.expression.ExpressionColumn.getColumnException(ExpressionColumn.java:163)
+	at org.h2.expression.ExpressionColumn.optimize(ExpressionColumn.java:145)
+	at org.h2.expression.Alias.optimize(Alias.java:52)
+	at org.h2.command.dml.Select.prepare(Select.java:1206)
+	at org.h2.command.Parser.prepareCommand(Parser.java:744)
+	at org.h2.engine.Session.prepareLocal(Session.java:657)
+	at org.h2.engine.Session.prepareCommand(Session.java:595)
+	at org.h2.jdbc.JdbcConnection.prepareCommand(JdbcConnection.java:1235)
+	at org.h2.jdbc.JdbcPreparedStatement.<init>(JdbcPreparedStatement.java:76)
+	at org.h2.jdbc.JdbcConnection.prepareStatement(JdbcConnection.java:352)
+	at carsharing.CompanyRepository.showRentedCar(CompanyRepository.java:235)
+	at carsharing.CompanyRepository.customerActions(CompanyRepository.java:296)
+	at carsharing.CompanyRepository.getAllCustomers(CompanyRepository.java:187)
+	at carsharing.Main.main(Main.java:34)
+2021-06-16 21:57:46 jdbc[6]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Синтаксическая ошибка в выражении SQL "UPDATE CUSTOMER SET (RENTED_CAR_ID) VALUES[*] ('3') WHERE ID = 2"; ожидалось "="
+Syntax error in SQL statement "UPDATE CUSTOMER SET (RENTED_CAR_ID) VALUES[*] ('3') WHERE ID = 2"; expected "="; SQL statement:
+UPDATE customer SET (rented_car_id) VALUES ('3') WHERE id = 2 [42001-200]
+2021-06-16 22:05:56 jdbc[7]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Столбец "CUSTOMER.RENTED_CAR" не найден
+Column "CUSTOMER.RENTED_CAR" not found; SQL statement:
+SELECT customer.id, customer.rented_car_id as redntedCarId, car.name as carName, company.name as companyName  FROM customer  LEFT JOIN car on customer.rented_car = car.id  LEFT JOIN company on car.company_id = company.id   WHERE customer.id =2 [42122-200]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:453)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:429)
+	at org.h2.message.DbException.get(DbException.java:205)
+	at org.h2.message.DbException.get(DbException.java:181)
+	at org.h2.expression.ExpressionColumn.getColumnException(ExpressionColumn.java:163)
+	at org.h2.expression.ExpressionColumn.optimize(ExpressionColumn.java:145)
+	at org.h2.expression.condition.Comparison.optimize(Comparison.java:190)
+	at org.h2.table.TableFilter.createIndexConditions(TableFilter.java:749)
+	at org.h2.table.TableFilter.createIndexConditions(TableFilter.java:756)
+	at org.h2.command.dml.Select.preparePlan(Select.java:1360)
+	at org.h2.command.dml.Select.prepare(Select.java:1227)
+	at org.h2.command.Parser.prepareCommand(Parser.java:744)
+	at org.h2.engine.Session.prepareLocal(Session.java:657)
+	at org.h2.engine.Session.prepareCommand(Session.java:595)
+	at org.h2.jdbc.JdbcConnection.prepareCommand(JdbcConnection.java:1235)
+	at org.h2.jdbc.JdbcPreparedStatement.<init>(JdbcPreparedStatement.java:76)
+	at org.h2.jdbc.JdbcConnection.prepareStatement(JdbcConnection.java:352)
+	at carsharing.CompanyRepository.showRentedCar(CompanyRepository.java:268)
+	at carsharing.CompanyRepository.customerActions(CompanyRepository.java:329)
+	at carsharing.CompanyRepository.getAllCustomers(CompanyRepository.java:209)
+	at carsharing.Main.main(Main.java:34)
+2021-06-16 22:26:59 jdbc[5]: exception
+org.h2.jdbc.JdbcSQLNonTransientException: Нет данных
+No data is available [2000-200]
+2021-06-16 22:28:13 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLNonTransientException: Нет данных
+No data is available [2000-200]
+2021-06-16 22:29:24 jdbc[5]: exception
+org.h2.jdbc.JdbcSQLNonTransientException: Нет данных
+No data is available [2000-200]
+2021-06-16 22:30:47 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLNonTransientException: Нет данных
+No data is available [2000-200]
+2021-06-16 22:36:07 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLNonTransientException: Нет данных
+No data is available [2000-200]
+2021-06-16 22:38:44 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Столбец "c" не найден
+Column "c" not found [42122-200]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:453)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:429)
+	at org.h2.message.DbException.get(DbException.java:205)
+	at org.h2.message.DbException.get(DbException.java:181)
+	at org.h2.jdbc.JdbcResultSet.getColumnIndex(JdbcResultSet.java:3195)
+	at org.h2.jdbc.JdbcResultSet.get(JdbcResultSet.java:3268)
+	at org.h2.jdbc.JdbcResultSet.getInt(JdbcResultSet.java:352)
+	at carsharing.CompanyRepository.isRented(CompanyRepository.java:374)
+	at carsharing.CompanyRepository.customerActions(CompanyRepository.java:323)
+	at carsharing.CompanyRepository.getAllCustomers(CompanyRepository.java:209)
+	at carsharing.Main.main(Main.java:34)
+2021-06-16 22:39:32 jdbc[5]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Синтаксическая ошибка в выражении SQL "UPDATE CUSTOMER SET (RENTED_CAR_ID) VALUES[*] (NULL) WHERE ID = 2"; ожидалось "="
+Syntax error in SQL statement "UPDATE CUSTOMER SET (RENTED_CAR_ID) VALUES[*] (NULL) WHERE ID = 2"; expected "="; SQL statement:
+UPDATE customer SET (rented_car_id) VALUES (NULL) WHERE id = 2 [42001-200]
+2021-06-16 22:51:39 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Столбец "CAR.NAME" должен быть в предложении GROUP BY
+Column "CAR.NAME" must be in the GROUP BY list; SQL statement:
+SELECT count(*) as c, customer.id, customer.rented_car_id as rentedCarId, car.name as carName, company.name as companyName  FROM customer  LEFT JOIN car on customer.rented_car_id = car.id  LEFT JOIN company on car.company_id = company.id  WHERE customer.id =3 AND customer.rented_car_id IS NOT NULL [90016-200]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:576)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:429)
+	at org.h2.message.DbException.get(DbException.java:205)
+	at org.h2.message.DbException.get(DbException.java:181)
+	at org.h2.expression.ExpressionColumn.getValue(ExpressionColumn.java:207)
+	at org.h2.expression.Alias.getValue(Alias.java:37)
+	at org.h2.command.dml.Select.constructGroupResultRow(Select.java:586)
+	at org.h2.command.dml.Select.processGroupResult(Select.java:553)
+	at org.h2.command.dml.Select.queryGroup(Select.java:488)
+	at org.h2.command.dml.Select.queryWithoutCache(Select.java:839)
+	at org.h2.command.dml.Query.queryWithoutCacheLazyCheck(Query.java:201)
+	at org.h2.command.dml.Query.query(Query.java:489)
+	at org.h2.command.dml.Query.query(Query.java:451)
+	at org.h2.command.CommandContainer.query(CommandContainer.java:285)
+	at org.h2.command.Command.executeQuery(Command.java:195)
+	at org.h2.jdbc.JdbcPreparedStatement.executeQuery(JdbcPreparedStatement.java:114)
+	at carsharing.CompanyRepository.showRentedCar(CompanyRepository.java:270)
+	at carsharing.CompanyRepository.customerActions(CompanyRepository.java:334)
+	at carsharing.CompanyRepository.getAllCustomers(CompanyRepository.java:209)
+	at carsharing.Main.main(Main.java:34)
+2021-06-16 22:56:49 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Столбец "CAR.NAME" должен быть в предложении GROUP BY
+Column "CAR.NAME" must be in the GROUP BY list; SQL statement:
+SELECT count(*) as c, customer.id, customer.rented_car_id as rentedCarId, car.name as carName, company.name as companyName  FROM customer  INNER JOIN car on customer.rented_car_id = car.id  INNER JOIN company on car.company_id = company.id  WHERE customer.id =3 [90016-200]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:576)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:429)
+	at org.h2.message.DbException.get(DbException.java:205)
+	at org.h2.message.DbException.get(DbException.java:181)
+	at org.h2.expression.ExpressionColumn.getValue(ExpressionColumn.java:207)
+	at org.h2.expression.Alias.getValue(Alias.java:37)
+	at org.h2.command.dml.Select.constructGroupResultRow(Select.java:586)
+	at org.h2.command.dml.Select.processGroupResult(Select.java:553)
+	at org.h2.command.dml.Select.queryGroup(Select.java:488)
+	at org.h2.command.dml.Select.queryWithoutCache(Select.java:839)
+	at org.h2.command.dml.Query.queryWithoutCacheLazyCheck(Query.java:201)
+	at org.h2.command.dml.Query.query(Query.java:489)
+	at org.h2.command.dml.Query.query(Query.java:451)
+	at org.h2.command.CommandContainer.query(CommandContainer.java:285)
+	at org.h2.command.Command.executeQuery(Command.java:195)
+	at org.h2.jdbc.JdbcPreparedStatement.executeQuery(JdbcPreparedStatement.java:114)
+	at carsharing.CompanyRepository.showRentedCar(CompanyRepository.java:270)
+	at carsharing.CompanyRepository.customerActions(CompanyRepository.java:334)
+	at carsharing.CompanyRepository.getAllCustomers(CompanyRepository.java:209)
+	at carsharing.Main.main(Main.java:34)
